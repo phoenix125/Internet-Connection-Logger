@@ -67,7 +67,9 @@ Do
 	SetStatusIdle()
 	TrayItemSetText($iTrayLastPoll, "Last Poll: " & _NowCalc())
 	Sleep(($aInterval * 1000) - (TimerDiff($tInit)))
-	If $aActiveURLs > 3 Then LogWrite("")
+	If $aActiveURLs > 3 Then
+		If ($aLogDetails = "3" Or $aLogDetails = "4" Then LogWrite("")
+	EndIf
 Until $tQuit
 
 Func PollWeb()
